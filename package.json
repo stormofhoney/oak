@@ -1,0 +1,57 @@
+{
+  "name": "@stormofhoney/oak",
+  "description": "1:1 drop-in replacement for acorn + acorn-walk, with extra AST utilities — ECMAScript parser and ESTree AST walker combined into one package",
+  "version": "0.9.9-rc001",
+  "main": "dist/oak.js",
+  "module": "dist/oak.mjs",
+  "types": "dist/oak.d.ts",
+  "exports": {
+    ".": [
+      {
+        "import": "./dist/oak.mjs",
+        "require": "./dist/oak.js",
+        "default": "./dist/oak.js"
+      },
+      "./dist/oak.js"
+    ],
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "oak": "bin/oak"
+  },
+  "files": [
+    "dist",
+    "bin",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=0.4.0"
+  },
+  "scripts": {
+    "build": "npm run build:main && npm run build:types",
+    "build:main": "rollup -c rollup.config.mjs",
+    "build:types": "node scripts/build-types.mjs",
+    "pretest": "npm run build",
+    "test": "node test/run.mjs",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "@rollup/plugin-buble": "^1.0.3",
+    "rollup": "^4.60.1"
+  },
+  "keywords": [
+    "ecmascript",
+    "parser",
+    "ast",
+    "estree",
+    "walker",
+    "acorn",
+    "acorn-walk"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stormofhoney/oak.git"
+  }
+}
